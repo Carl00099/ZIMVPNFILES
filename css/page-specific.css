@@ -1,0 +1,115 @@
+/* --- PAGE-SPECIFIC.CSS: Unique Themes and Advanced Animations --- */
+
+/* --- HOME PAGE: 3D Animated Grid/Cubes --- */
+.home-container {
+    perspective: 1000px; /* Enable 3D space */
+}
+.category-block {
+    position: relative;
+    overflow: hidden;
+    transform: rotateX(0deg); /* Start at neutral 3D position */
+    transition: transform 0.5s ease;
+    padding: 30px 10px;
+}
+/* 3D Hover Effect */
+.category-block:hover {
+    transform: rotateX(10deg) scale(1.05) translateZ(10px); 
+    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.5);
+}
+
+/* --- SOCKSIP PAGE: Neon Grid Background --- */
+.socksip-page-bg {
+    background: radial-gradient(circle at center, #102e5c 0%, #0d1a33 60%);
+    /* Replace with a repeating animated grid SVG/PNG for a better effect */
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(0, 255, 255, 0.1) 11px);
+    animation: pulseGlow 5s infinite alternate;
+}
+@keyframes pulseGlow {
+    from { background-size: 100%; }
+    to { background-size: 105%; }
+}
+.socksip-visual {
+    width: 80px; height: 80px; background-color: var(--text-color);
+    box-shadow: 0 0 15px var(--text-color);
+    animation: rotate3d 10s linear infinite; /* Simple 3D rotation */
+}
+@keyframes rotate3d {
+    from { transform: rotateY(0deg) rotateX(0deg); }
+    to { transform: rotateY(360deg) rotateX(360deg); }
+}
+
+
+/* --- HA TUNNEL PAGE: Digital Rain/Matrix Style --- */
+/* The main body element should have a background video or complex JS canvas animation for true "Digital Rain" */
+/* For CSS only, we will use a color shift */
+.ha-tunnel-page-bg {
+    background-color: #050e1f;
+    transition: background-color 10s ease-in-out infinite alternate;
+}
+.ha-tunnel-card {
+    /* Highly transparent, minimal border */
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px dashed rgba(0, 255, 255, 0.2);
+    animation: subtleShift 4s infinite alternate;
+}
+@keyframes subtleShift {
+    from { transform: skewX(0deg); }
+    to { transform: skewX(0.5deg); }
+}
+
+
+/* --- NPV CLOUDS PAGE: Advanced Glassmorphism Table --- */
+.npv-page-bg {
+    background-color: #050e1f;
+    background-image: radial-gradient(circle at top right, rgba(0, 255, 255, 0.1) 0%, transparent 40%);
+}
+
+.cloud-table-container {
+    background: rgba(26, 77, 140, 0.1);
+    backdrop-filter: blur(15px); /* Stronger glass effect */
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    padding: 15px;
+    border-radius: 10px;
+}
+/* Individual Row Hover (3D Tilt) */
+.cloud-row {
+    transition: all 0.3s ease;
+    transform: perspective(1000px) rotateX(0deg);
+}
+.cloud-row:hover {
+    background: rgba(0, 255, 255, 0.15);
+    transform: perspective(1000px) rotateX(2deg);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.status-active { color: #00FF00; } /* Green for Active */
+.status-maintenance-text { color: #FF0000; } /* Red for Maintenance */
+
+/* Special "Copy" button animation on click (requires JS class addition) */
+.copy-button {
+    overflow: hidden;
+    position: relative;
+}
+.copy-button:active::before {
+    content: "COPIED!";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: white;
+    color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: flashCopy 0.3s ease-in;
+}
+
+@keyframes flashCopy {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Footer & Other elements */
+.footer-section {
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
