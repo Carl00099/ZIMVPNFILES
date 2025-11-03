@@ -1,6 +1,19 @@
-   document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     
-    // NPV Cloud Copy Functionality
+    // --- 1. NETFLIX STYLE LOADER CONTROL ---
+    const loader = document.getElementById('site-loader');
+    
+    // Set a delay (e.g., 2 seconds) for the animation to play before hiding the loader
+    setTimeout(() => {
+        if (loader) {
+            loader.classList.add('loader-hidden');
+            // Optional: Remove background filter after loader is gone (if applied)
+            document.body.style.filter = 'blur(5px)'; 
+        }
+    }, 2000); // 2000ms = 2 seconds
+
+    
+    // --- 2. NPV Cloud Copy Functionality ---
     const copyButtons = document.querySelectorAll('.copy-button');
     const statusMessage = document.getElementById('copy-status');
 
