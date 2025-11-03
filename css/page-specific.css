@@ -4,7 +4,6 @@
 .home-container {
     perspective: 1000px;
 }
-/* 3D Hover Effect */
 .category-block:hover {
     transform: rotateX(10deg) scale(1.05) translateZ(10px); 
     box-shadow: 0 10px 30px rgba(0, 255, 255, 0.5);
@@ -13,16 +12,14 @@
 
 /* --- SOCKSIP PAGE: Neon Grid Background --- */
 .socksip-page-bg {
-    background: radial-gradient(circle at center, #102e5c 0%, #0d1a33 60%);
-    background-image: repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(0, 255, 255, 0.1) 11px);
-    animation: pulseGlow 5s infinite alternate;
+    /* Retaining unique animation on the container, but using the global background image */
+    animation: pulseGlowContainer 5s infinite alternate;
 }
-@keyframes pulseGlow {
+@keyframes pulseGlowContainer {
     from { background-size: 100%; }
     to { background-size: 105%; }
 }
 .socksip-card .file-image {
-    /* Simple 3D rotation for the image/icon */
     animation: rotate3d 10s linear infinite; 
 }
 @keyframes rotate3d {
@@ -32,15 +29,9 @@
 
 
 /* --- HA TUNNEL PAGE: Digital Rain/Matrix Style --- */
-.ha-tunnel-page-bg {
-    background-color: #050e1f;
-    transition: background-color 10s ease-in-out infinite alternate;
-}
 .ha-tunnel-card {
-    /* Highly transparent, minimal border */
     background: rgba(0, 255, 255, 0.05);
     border: 1px dashed rgba(0, 255, 255, 0.2);
-    /* Subtle skew animation */
     animation: subtleShift 4s infinite alternate;
 }
 @keyframes subtleShift {
@@ -50,10 +41,6 @@
 
 
 /* --- NPV CLOUDS PAGE: Advanced Glassmorphism Table --- */
-.npv-page-bg {
-    background-color: #050e1f;
-    background-image: radial-gradient(circle at top right, rgba(0, 255, 255, 0.1) 0%, transparent 40%);
-}
 
 /* Individual Row Hover (3D Tilt) */
 .cloud-row {
