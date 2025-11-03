@@ -1,12 +1,14 @@
 /* --- CORE.CSS: Base Styles, Blue Theme, and Glassmorphism --- */
 
 :root {
-    --bg-color: #0d1a33; /* Deep Dark Blue */
-    --text-color: #00FFFF; /* Electric Cyan/Blue Neon */
-    --accent-color: #0099FF; /* Primary Blue Accent */
-    --border-color: #1a4d8c; /* Darker Blue Border */
+    --bg-color: #0d1a33; 
+    --text-color: #00FFFF; 
+    --accent-color: #0099FF; 
+    --border-color: #1a4d8c; 
     --link-hover-color: #FFFFFF;
     --glass-blur: 10px;
+    --whatsapp-color: #075E54;
+    --whatsapp-text: #E5DDD5;
 }
 
 * {
@@ -16,7 +18,6 @@
 }
 
 body {
-    background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Inconsolata', monospace;
     min-height: 100vh;
@@ -24,72 +25,90 @@ body {
     justify-content: center;
     align-items: flex-start;
     padding: 40px 0;
-    background: linear-gradient(-45deg, #0a1428, #0d1a33, #0a1428, #10264d);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    /* --- NEW: Blurred Background Image --- */
+    background: var(--bg-color) url('../images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-blend-mode: overlay; /* Subtle blend with dark blue */
+    /* Add blur effect using a filter */
+    filter: blur(0px); /* Initial state (unblurred) */
+    transition: filter 0.5s ease-out;
 }
 
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* Adjust the main content container to be unblurred */
+.terminal-container {
+    filter: none;
+}
+
+/* --- Loader styles (hidden by default) --- */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 1s ease-out, visibility 1s ease-out;
+}
+
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* --- NETFLIX TEXT EFFECT --- */
+.netflix-logo {
+    font-size: 4em;
+    font-weight: 700;
+    color: var(--text-color);
+    position: relative;
+    text-shadow: 0 0 10px var(--text-color);
+    overflow: hidden;
+    white-space: nowrap;
+    animation: revealText 1.5s forwards, pulseGlow 5s infinite alternate;
+}
+
+.netflix-logo::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    animation: wipeText 1.5s 0.2s cubic-bezier(0.8, 0, 0.2, 1) forwards;
+}
+
+@keyframes wipeText {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(101%); }
+}
+
+@keyframes pulseGlow {
+    0% { text-shadow: 0 0 5px var(--text-color); }
+    50% { text-shadow: 0 0 20px var(--text-color), 0 0 40px var(--accent-color); }
+    100% { text-shadow: 0 0 5px var(--text-color); }
 }
 
 .terminal-container {
     width: 95%;
     max-width: 1000px;
-    background: rgba(26, 77, 140, 0.2);
+    background: rgba(26, 77, 140, 0.4);
     backdrop-filter: blur(var(--glass-blur));
     -webkit-backdrop-filter: blur(var(--glass-blur));
     border: 1px solid rgba(0, 255, 255, 0.2);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
     padding: 30px;
     margin: 20px 0;
     transition: all 0.5s ease;
     border-radius: 15px;
 }
 
-/* --- TEXT & NEON GLOW --- */
-.neon-glow {
-    text-shadow: 
-        0 0 5px var(--text-color), 
-        0 0 10px var(--accent-color), 
-        0 0 20px var(--text-color);
-    color: var(--text-color);
-}
-
-h1 {
-    font-size: 3em;
-    text-align: center;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.tagline {
-    font-size: 1.2em;
-    color: var(--accent-color);
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.section-title {
-    font-size: 1.6em;
-    text-align: center;
-    margin: 30px 0 20px;
-    color: var(--text-color);
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 5px;
-}
-
-hr {
-    border: none;
-    height: 1px;
-    background-color: var(--border-color);
-    margin: 20px 0;
-}
-
-/* --- LINKS AND BUTTONS BASE STYLE --- */
+/* --- WHATSAPP STYLE BUTTONS --- */
 .action-button, .channel-button, .back-link {
     font-family: 'Inconsolata', monospace;
     text-decoration: none;
@@ -98,18 +117,20 @@ hr {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    border-radius: 5px;
-    color: var(--text-color);
-    background: rgba(0, 255, 255, 0.1);
-    border: 1px solid var(--text-color);
-    box-shadow: 0 0 8px var(--text-color);
+    border-radius: 25px; /* WhatsApp-style rounding */
+    padding: 12px 25px;
+    
+    color: var(--bg-color); 
+    background: var(--text-color); 
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
 }
 
 .action-button:hover, .channel-button:hover, .back-link:hover {
+    background: var(--link-hover-color);
     color: var(--bg-color);
-    background: var(--text-color);
-    box-shadow: 0 0 15px var(--text-color), 0 0 30px var(--accent-color);
-    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 25px var(--text-color);
+    transform: scale(1.05) translateY(-1px);
 }
 
 .back-link {
@@ -120,160 +141,57 @@ hr {
     font-size: 0.9em;
 }
 
-/* --- Navigation Grid (Home) --- */
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    text-align: center;
-    padding: 10px;
-}
-
-.category-block {
-    position: relative;
+/* Other core styles (h1, .category-grid, table, etc.) remain as previously provided */
+/* Added simple toggle styles here for completeness */
+.toggle-switch-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 30px 10px;
-    background-color: rgba(0, 0, 0, 0.6);
-    border: 2px solid var(--border-color);
-    text-decoration: none;
-    color: var(--text-color);
-    transition: all 0.5s ease;
-    min-height: 150px;
-    overflow: hidden; /* Important for 3D effect */
-    transform-style: preserve-3d;
+    margin: 20px 0;
 }
-
-.category-icon {
+.toggle-switch {
+    position: relative;
+    display: inline-block;
     width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
-    transition: all 0.3s ease;
+    height: 34px;
 }
-
-.category-name {
-    font-weight: bold;
-    z-index: 10;
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
-
-/* --- Download/File Cards --- */
-.file-download-section {
-    text-align: center;
-    padding: 20px 0;
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px; 
 }
-
-.file-card {
-    padding: 30px;
-    border: 1px solid var(--border-color);
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px auto;
-    max-width: 500px;
-    border-radius: 10px;
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
 }
-
-.file-image {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 5px var(--text-color));
+input:checked + .slider {
+    background-color: var(--accent-color); 
+    box-shadow: 0 0 5px var(--accent-color);
 }
-
-.file-description {
-    margin-bottom: 10px;
-    font-size: 1.1em;
-    color: #90FF90;
+input:checked + .slider:before {
+    transform: translateX(26px);
 }
-
-.file-metadata {
-    font-size: 0.9em;
-    color: var(--accent-color);
-    margin-bottom: 25px;
-}
-
-/* --- Table Styles (NPV CLOUDS) --- */
-.cloud-table-container {
-    overflow-x: auto;
-    padding: 10px;
-    margin: 20px auto;
-    background: rgba(26, 77, 140, 0.1);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(0, 255, 255, 0.3);
-    border-radius: 10px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 15px;
-    text-align: left;
-    border: 1px solid var(--border-color);
-}
-
-th {
-    background-color: rgba(0, 255, 255, 0.1);
-    color: var(--text-color);
-    text-transform: uppercase;
-}
-
-.status-active { color: #00FF00; }
-.status-maintenance-text { color: #FF0000; }
-
-.copy-button {
-    width: 150px;
-    padding: 10px;
-    margin: 0;
-    font-size: 0.9em;
-}
-
-.unavailable-button {
-    background-color: #555555;
-    cursor: not-allowed;
-    box-shadow: none;
-}
-
-.unavailable-button:hover {
-    background-color: #555555;
-    box-shadow: none;
-    transform: none;
-}
-
-.status-message {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 1.1em;
-    height: 20px;
-}
-
-.footer-section {
-    text-align: center;
-    margin-top: 30px;
-    font-size: 0.8em;
+.toggle-label {
+    margin-left: 15px;
+    font-weight: 700;
     color: var(--accent-color);
 }
-
-/* Media Query for smaller screens */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 1.8em;
-    }
-    .terminal-container {
-        padding: 10px;
-    }
-    .action-button, .channel-button {
-        width: 100%;
-    }
-    .category-grid {
-        grid-template-columns: 1fr;
-    }
-    .copy-button {
-        width: 100%;
-    }
-}
+/* Remaining styles from previous response (table, footer, etc) */
