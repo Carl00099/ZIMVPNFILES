@@ -4,71 +4,185 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elonsk Files - HA Tunnel Only</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { 
-            background: #000; 
-            color: #0f0; 
-            font-family: Arial; 
-            margin: 0; 
-            padding: 20px;
-            text-align: center;
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #000000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
         }
-        h1 { 
-            font-size: 3em; 
-            text-shadow: 0 0 15px #0f0; 
-        }
-        .date { 
-            background: #f00; 
-            color: white; 
-            padding: 15px; 
-            font-size: 1.4em; 
-            font-weight: bold;
+
+        /* Ultra Dark Glass Card */
+        .glass-card {
+            background: rgba(10, 10, 10, 0.75);
+            border-radius: 26px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8),
+                        0 0 30px rgba(0, 255, 0, 0.2);
+            padding: 35px;
             margin: 20px;
+            max-width: 92%;
+            text-align: center;
+            animation: float 8s ease-in-out infinite;
         }
-        .btn {
-            background: #00ff00;
-            color: #000;
-            font-size: 1.8em;
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 3.6em;
+            font-weight: 900;
+            background: linear-gradient(90deg, #0f0, #00ff99);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
+            margin: 10px 0;
+        }
+
+        .date {
+            background: rgba(255, 0, 0, 0.5);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 50px;
             font-weight: bold;
-            padding: 20px 50px;
-            margin: 30px;
-            display: inline-block;
+            font-size: 1.3em;
+            border: 1px solid #f00;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .server-status {
+            background: rgba(0, 255, 0, 0.15);
+            color: #00ff41;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: bold;
+            border: 1px solid #0f0;
+            margin: 25px 0;
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.5);
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 25px rgba(0, 255, 0, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(0, 255, 0, 0.8); }
+            100% { box-shadow: 0 0 25px rgba(0, 255, 0, 0.5); }
+        }
+
+        .info {
+            font-size: 1.45em;
+            margin: 28px 0;
+            line-height: 1.7;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.9);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #00ff41, #00cc00);
+            color: #000;
+            font-size: 1.9em;
+            font-weight: 900;
+            padding: 22px 70px;
+            border-radius: 22px;
             text-decoration: none;
-            border-radius: 15px;
-            box-shadow: 0 0 25px #0f0;
+            display: inline-block;
+            margin: 35px 0;
+            box-shadow: 0 15px 40px rgba(0, 255, 0, 0.5);
+            transition: all 0.3s;
+            border: 2px solid #0f0;
         }
-        .btn:hover { background: #00cc00; }
-        .info { 
-            color: #0f0; 
-            font-size: 1.1em; 
-            margin: 10px;
+
+        .btn:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 25px 60px rgba(0, 255, 0, 0.7);
         }
-        footer { 
-            margin-top: 50px; 
-            color: #0f0; 
+
+        footer {
+            margin-top: 60px;
+            font-size: 1.1em;
+            opacity: 0.9;
+            text-shadow: 0 0 10px #0f0;
+        }
+
+        /* WhatsApp Button - Black Theme Edition */
+        .whatsapp-float {
+            position: fixed;
+            width: 68px;
+            height: 68px;
+            bottom: 30px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
+            z-index: 1000;
+            border: 3px solid #000;
+        }
+
+        .whatsapp-float i {
+            animation: ring 2s infinite;
+        }
+
+        @keyframes ring {
+            0%, 100% { transform: rotate(0); }
+            10% { transform: rotate(-30deg); }
+            20% { transform: rotate(30deg); }
+            30% { transform: rotate(-20deg); }
+            40% { transform: rotate(20deg); }
+            50% { transform: rotate(0); }
+        }
+
+        /* iPhone Safe Area */
+        @supports (padding: max(0px)) {
+            body { padding-bottom: env(safe-area-inset-bottom); }
         }
     </style>
 </head>
 <body>
 
-    <h1>ELONSK FILES</h1>
-    
-    <div class="date">
-        🔥 UPDATED: 22:23:24  NOVEMBER 2025 🔥
+    <div class="glass-card">
+        <h1>ELONSK FILES</h1>
+
+        <div class="date">
+             UPDATED: 22 NOVEMBER 2025 
+        </div>
+
+        <div class="server-status">
+             SERVER ONLINE • SUPER FAST
+        </div>
+
+        <div class="info">
+            <strong> ECONET UNLIMITED</strong><br>
+            Speed: 4-8 Mbps • Expires in 7 days<br>
+            100% Working Right Now • All Zimbabwe Lines
+        </div>
+
+        <a href="js/ELONSK FAST FILE EC🇿🇼🔥.hat" class="btn" download>
+            DOWNLOAD .HAT FILE 
+        </a>
     </div>
 
-    <!-- ONLY ONE HA TUNNEL FILE SECTION -->
-    <div class="info">
-        <strong>🚀 EC UNLIMITED</strong><br>
-        Speed: 10-80Mbps • Expires in 7 days • 100% Working Right Now | ENJOY 
-    </div>
-
-    <a href="js/ELONSK FAST FILE EC🇿🇼🔥.hat" class="btn" download>
-        DOWNLOAD .HAT FILE ⚡
+    <!-- WhatsApp Floating Button -->
+    <a href="https://whatsapp.com/channel/0029VbBVpuzHltY7Yk3GZU0o" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
     <footer>
-        Made in Zimbabwe 🇿🇼 | Daily Fresh Files | EACH DAY WE UPDATE NEW FILES
+        Made in Zimbabwe  • Pure Black Edition • Elonsk Files 2025
     </footer>
 
 </body>
