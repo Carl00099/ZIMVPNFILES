@@ -6,14 +6,12 @@
     <title>www.ElonskFiles.com | 1 Tap Connect</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* RESET & BASE */
         body {
             margin: 0; padding: 0; background: #000; color: #0f0;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             display: flex; flex-direction: column; align-items: center;
         }
 
-        /* Glassmorphism Main Card */
         .glass-card {
             background: rgba(15, 15, 15, 0.9); border-radius: 25px;
             backdrop-filter: blur(15px); border: 1px solid rgba(0, 255, 0, 0.2);
@@ -21,7 +19,6 @@
             box-shadow: 0 8px 32px rgba(0, 255, 0, 0.2);
         }
 
-        /* SERVER ACTIVE ANIMATION */
         .server-status {
             display: inline-flex; align-items: center; gap: 8px;
             background: rgba(0, 255, 0, 0.1); border: 1px solid #0f0;
@@ -51,8 +48,8 @@
             margin-top: 20px; box-shadow: 0 4px 15px rgba(0, 255, 0, 0.4);
         }
 
-        /* COMMENTS SECTION */
         .comments-container { width: 90%; max-width: 500px; margin-bottom: 100px; }
+        
         .comment-item {
             display: flex; padding: 15px 0; border-bottom: 1px solid rgba(0, 255, 0, 0.1);
             animation: slideUp 0.4s ease-out;
@@ -69,7 +66,6 @@
         .comment-text p { margin: 5px 0; color: #fff; font-size: 0.95em; line-height: 1.4; }
         .comment-time { font-size: 0.75em; color: rgba(0, 255, 0, 0.6); }
 
-        /* FLOATING BUTTONS */
         .order-float {
             position: fixed; bottom: 30px; left: 20px; background: #ff4500;
             color: #fff; padding: 12px 22px; border-radius: 50px; font-weight: bold;
@@ -90,7 +86,6 @@
             60% { transform: translateY(-6px); }
         }
 
-        /* PRICING OVERLAY */
         #pricing-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; z-index: 2000; padding: 20px; box-sizing: border-box; overflow-y: auto;
@@ -104,8 +99,7 @@
         .amt { font-size: 2em; font-weight: 900; color: #fff; }
 
         .chat-icons { display: flex; gap: 25px; margin-top: 15px; }
-        .chat-icons a { font-size: 32px; text-decoration: none; transition: transform 0.2s; }
-        .chat-icons a:hover { transform: scale(1.2); }
+        .chat-icons a { font-size: 32px; text-decoration: none; }
         .fa-facebook-messenger { color: #0084FF; }
         .fa-instagram { color: #E4405F; }
         .fa-whatsapp { color: #25D366; }
@@ -127,12 +121,8 @@
     </div>
 
     <div class="comments-container">
-        <h3 id="counter-text">10 / 188 Comments</h3>
-        <div id="comments-list">
-            </div>
-        <button onclick="loadMore()" id="load-more-btn" style="background:none; border:none; color:#0f0; width:100%; padding:20px; font-weight:bold; cursor:pointer; font-size:1em;">
-            <i class="fas fa-plus-circle"></i> LOAD MORE COMMENTS
-        </button>
+        <h3 id="counter-text">0 / 0 Comments</h3>
+        <div id="comments-list"></div>
     </div>
 
     <a href="javascript:void(0)" class="order-float" onclick="togglePricing()">
@@ -143,14 +133,13 @@
     </a>
 
     <div id="pricing-overlay">
-        <button onclick="togglePricing()" style="background:none; border:1px solid #0f0; color:#0f0; padding:10px 20px; border-radius:10px; margin-bottom:20px; cursor:pointer;">← BACK</button>
+        <button onclick="togglePricing()" style="background:none; border:1px solid #0f0; color:#0f0; padding:10px 20px; border-radius:10px; margin-bottom:20px;">← BACK</button>
         <h1 style="text-align:center;">PREMIUM ACCESS 👑</h1>
 
         <div class="price-card">
             <i class="fas fa-bolt" style="position:absolute; top:20px; right:20px; color:#0f0;"></i>
-            <div style="color:#0f0; font-weight:bold; letter-spacing: 1px;">WEEKLY PASS</div>
+            <div style="color:#0f0; font-weight:bold;">WEEKLY PASS</div>
             <div class="amt">$1 <span style="font-size:0.4em; color:#888;">/ 7 DAYS</span></div>
-            <p style="font-size: 0.9em; margin: 15px 0 5px 0;">Chat with Admin to buy:</p>
             <div class="chat-icons">
                 <a href="https://www.facebook.com/profile.php?id=61577785121216"><i class="fab fa-facebook-messenger"></i></a>
                 <a href="https://www.facebook.com/profile.php?id=61577785121216"><i class="fab fa-instagram"></i></a>
@@ -160,9 +149,8 @@
 
         <div class="price-card vip">
             <i class="fas fa-crown" style="position:absolute; top:20px; right:20px; color:#ffd700;"></i>
-            <div style="color:#ffd700; font-weight:bold; letter-spacing: 1px;">MONTHLY GOLD</div>
+            <div style="color:#ffd700; font-weight:bold;">MONTHLY GOLD</div>
             <div class="amt">$3 <span style="font-size:0.4em; color:#888;">/ 30 DAYS</span></div>
-            <p style="font-size: 0.9em; margin: 15px 0 5px 0;">Chat with Admin to buy:</p>
             <div class="chat-icons">
                 <a href="https://www.facebook.com/profile.php?id=61577785121216"><i class="fab fa-facebook-messenger"></i></a>
                 <a href="https://www.facebook.com/profile.php?id=61577785121216"><i class="fab fa-instagram"></i></a>
@@ -171,12 +159,8 @@
         </div>
 
         <div class="payment-footer">
-            <p style="font-size: 0.9em;">USAMIRIRE MA 1 DAY ITA RAKO RE WEEK KANA MONTH:</p>
-            <div style="font-weight: bold; letter-spacing: 1px; color: #fff;">PROOF WAONA KA FILE MA 1 •HUYA CHERO NEYAUNAYO •</div>
-            <div style="margin-top: 15px; font-size: 1.5em;">
-                <i class="fas fa-mobile-alt" style="margin: 0 10px;"></i>
-                <i class="fas fa-university" style="margin: 0 10px;"></i>
-            </div>
+            <p>PROOF WAONA KA FILE MA 1 • HUYA CHERO NEYAUNAYO •</p>
+            <div style="font-weight: bold;">INNBUCKS • ECOCASH • MUKURU</div>
         </div>
     </div>
 
@@ -185,57 +169,6 @@
             const overlay = document.getElementById('pricing-overlay');
             overlay.style.display = (overlay.style.display === 'block') ? 'none' : 'block';
         }
-
-        // 100 COMMENT POOL (Expanding with Shona Slang)
-        const commentPool = [
-            {n:"Tinashe M.", t:"Elonsk hasuda ye drink here wakaipa wangu", d:"Just now"},
-            {n:"Kuda W.", t:"1 tap wakuto nakirwa zveshuwa, zvaita mhani.", d:"4m ago"},
-            {n:"Ruvimbo G.", t:"Haa mupfana uyu akaipa, file ririkubvira!", d:"12m ago"},
-            {n:"Farai J.", t:"Connected ka 1 haa nhasi tiktokiri kupinda bussy.", d:"25m ago"},
-            {n:"Tatenda Z.", t:"Ndirikutamba Freefire pasina lag, file iri ma-one!", d:"40m ago"},
-            {n:"Munya X.", t:"Speed yacho i-fire mhani! Data harisi kupera.", d:"1h ago"},
-            {n:"Chipo R.", t:"Ndange ndichiti manyepo but zvashanda zvisingaite.", d:"1h ago"},
-            {n:"Blessing T.", t:"Tik Tok yacho ikungoti pwa, thanks admin.", d:"2h ago"},
-            {n:"Nyasha P.", t:"Watiuraya ne speed Elonsk, tiri mu 4G plus muno.", d:"3h ago"},
-            {n:"Tafadzwa K.", t:", 1 tap connect pasina dambudziko.", d:"4h ago"},
-            {n:"Anesu B.", t:"Haa file iri rakaipa ne speed mhani, keep it up!", d:"5h ago"},
-            {n:"Vimbai S.", t:"Ndafara zvisingaite, ndakwanisa kupedza ma series angu.", d:"6h ago"},
-            {n:"Prosper M.", t:"1 tap connect, no stress. Admin unogona.", d:"7h ago"}
-        ];
-
-        let currentCount = 0;
-
-        function loadMore() {
-            const list = document.getElementById('comments-list');
-            const target = currentCount + 10;
-            
-            for (let i = currentCount; i < target; i++) {
-                if (i >= commentPool.length) {
-                    document.getElementById('load-more-btn').style.display = 'none';
-                    break;
-                }
-                const c = commentPool[i];
-                // Using a service that provides diverse faces based on random seeds
-                const randomFace = `https://i.pravatar.cc/150?u=elonsk${i}`;
-                
-                list.innerHTML += `
-                    <div class="comment-item">
-                        <img src="${randomFace}" class="profile-img">
-                        <div class="comment-text">
-                            <strong>${c.n} <i class="fas fa-check-circle" style="font-size:0.8em;"></i></strong>
-                            <p>${c.t}</p>
-                            <span class="comment-time"><i class="fas fa-thumbs-up"></i> 12 · ${c.d}</span>
-                        </div>
-                    </div>
-                `;
-                currentCount++;
-            }
-            document.getElementById('counter-text').innerText = currentCount + " / 188 Comments";
-        }
-
-        // Run on load
-        window.onload = loadMore;
     </script>
-
 </body>
 </html>
