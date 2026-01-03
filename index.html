@@ -3,188 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>www.Econetnewhost2026.com</title>
+    <title>www.ElonskFiles.com | 1 Tap Connect</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* RESET & BASE */
         body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            background: #000000;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            color: #0f0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
+            margin: 0; padding: 0; background: #000; color: #0f0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex; flex-direction: column; align-items: center;
         }
 
-        /* Ultra Dark Glass Card */
+        /* Glassmorphism Main Card */
         .glass-card {
-            background: rgba(10, 10, 10, 0.75);
-            border-radius: 26px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 255, 0, 0.3);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8),
-                        0 0 30px rgba(0, 255, 0, 0.2);
-            padding: 35px;
-            margin: 20px;
-            max-width: 92%;
-            text-align: center;
-            animation: float 8s ease-in-out infinite;
+            background: rgba(15, 15, 15, 0.9); border-radius: 25px;
+            backdrop-filter: blur(15px); border: 1px solid rgba(0, 255, 0, 0.2);
+            padding: 30px; margin: 20px; text-align: center; max-width: 400px;
+            box-shadow: 0 8px 32px rgba(0, 255, 0, 0.2);
         }
 
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0); }
-        }
-
-        h1 {
-            font-size: 3.6em;
-            font-weight: 900;
-            background: linear-gradient(90deg, #0f0, #00ff99);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
-            margin: 10px 0;
-        }
-
-        .date {
-            background: rgba(255, 0, 0, 0.5);
-            color: white;
-            padding: 14px 30px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.3em;
-            border: 1px solid #f00;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
-        }
-
+        /* SERVER ACTIVE ANIMATION */
         .server-status {
-            background: rgba(0, 255, 0, 0.15);
-            color: #00ff41;
-            padding: 14px 35px;
-            border-radius: 50px;
-            font-weight: bold;
-            border: 1px solid #0f0;
-            margin: 25px 0;
-            box-shadow: 0 0 25px rgba(0, 255, 0, 0.5);
-            animation: pulse 3s infinite;
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(0, 255, 0, 0.1); border: 1px solid #0f0;
+            padding: 5px 15px; border-radius: 50px; font-size: 0.75em;
+            font-weight: bold; margin-bottom: 15px;
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 25px rgba(0, 255, 0, 0.5); }
-            50% { box-shadow: 0 0 40px rgba(0, 255, 0, 0.8); }
-            100% { box-shadow: 0 0 25px rgba(0, 255, 0, 0.5); }
+        .ping-dot {
+            width: 8px; height: 8px; background: #0f0; border-radius: 50%;
+            position: relative;
         }
 
-        .info {
-            font-size: 1.45em;
-            margin: 28px 0;
-            line-height: 1.7;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.9);
+        .ping-dot::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: #0f0; border-radius: 50%; animation: ping 1.5s infinite;
         }
 
-        .btn {
-            background: linear-gradient(135deg, #00ff41, #00cc00);
-            color: #000;
-            font-size: 1.9em;
-            font-weight: 900;
-            padding: 22px 70px;
-            border-radius: 22px;
-            text-decoration: none;
-            display: inline-block;
-            margin: 35px 0;
-            box-shadow: 0 15px 40px rgba(0, 255, 0, 0.5);
-            transition: all 0.3s;
-            border: 2px solid #0f0;
+        @keyframes ping {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
         }
 
-        .btn:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 25px 60px rgba(0, 255, 0, 0.7);
+        .download-btn {
+            background: linear-gradient(135deg, #00ff41, #008f11);
+            color: #000; padding: 15px 35px; border-radius: 50px;
+            text-decoration: none; font-weight: 900; display: inline-block;
+            margin-top: 20px; box-shadow: 0 4px 15px rgba(0, 255, 0, 0.4);
         }
 
-        footer {
-            margin-top: 60px;
-            font-size: 1.1em;
-            opacity: 0.9;
-            text-shadow: 0 0 10px #0f0;
+        /* COMMENTS SECTION */
+        .comments-container { width: 90%; max-width: 500px; margin-bottom: 100px; }
+        .comment-item {
+            display: flex; padding: 15px 0; border-bottom: 1px solid rgba(0, 255, 0, 0.1);
+            animation: slideUp 0.4s ease-out;
         }
 
-        /* WhatsApp Button - Black Theme Edition */
-        .whatsapp-float {
-            position: fixed;
-            width: 68px;
-            height: 68px;
-            bottom: 30px;
-            right: 20px;
-            background: #25D366;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 38px;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
-            z-index: 1000;
-            border: 3px solid #000;
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .profile-img {
+            width: 50px; height: 50px; border-radius: 50%; 
+            margin-right: 15px; border: 2px solid #0f0; object-fit: cover;
         }
 
-        .whatsapp-float i {
-            animation: ring 2s infinite;
+        .comment-text strong { color: #00ff99; font-size: 0.9em; }
+        .comment-text p { margin: 5px 0; color: #fff; font-size: 0.95em; line-height: 1.4; }
+        .comment-time { font-size: 0.75em; color: rgba(0, 255, 0, 0.6); }
+
+        /* FLOATING BUTTONS */
+        .order-float {
+            position: fixed; bottom: 30px; left: 20px; background: #ff4500;
+            color: #fff; padding: 12px 22px; border-radius: 50px; font-weight: bold;
+            text-decoration: none; z-index: 1000; border: 2px solid #fff;
+            animation: bounce 2s infinite; display: flex; align-items: center; gap: 10px;
         }
 
-        @keyframes ring {
-            0%, 100% { transform: rotate(0); }
-            10% { transform: rotate(-30deg); }
-            20% { transform: rotate(30deg); }
-            30% { transform: rotate(-20deg); }
-            40% { transform: rotate(20deg); }
-            50% { transform: rotate(0); }
+        .wa-float {
+            position: fixed; bottom: 30px; right: 20px; background: #25D366;
+            width: 60px; height: 60px; border-radius: 50%; z-index: 1000;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; color: #fff; text-decoration: none; border: 2px solid #fff;
         }
 
-        /* iPhone Safe Area */
-        @supports (padding: max(0px)) {
-            body { padding-bottom: env(safe-area-inset-bottom); }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-12px); }
+            60% { transform: translateY(-6px); }
         }
+
+        /* PRICING OVERLAY */
+        #pricing-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 2000; padding: 20px; box-sizing: border-box; overflow-y: auto;
+        }
+
+        .price-card {
+            background: #111; border: 1px solid #0f0; border-radius: 20px;
+            padding: 20px; margin: 15px 0; text-align: left; position: relative;
+        }
+        .price-card.vip { border-color: #ffd700; box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); }
+        .amt { font-size: 2em; font-weight: 900; color: #fff; }
+
+        .chat-icons { display: flex; gap: 25px; margin-top: 15px; }
+        .chat-icons a { font-size: 32px; text-decoration: none; transition: transform 0.2s; }
+        .chat-icons a:hover { transform: scale(1.2); }
+        .fa-facebook-messenger { color: #0084FF; }
+        .fa-instagram { color: #E4405F; }
+        .fa-whatsapp { color: #25D366; }
+
+        .payment-footer { margin-top: 40px; border-top: 1px dashed #333; padding-top: 20px; text-align: center; }
     </style>
 </head>
 <body>
 
     <div class="glass-card">
-        <h2>1 TAP WAKUTO NAKIRWA #ELONSKZW </h2>
-
-        <div class="date">
-             UPDATED: 3 January 2026
-        </div>
-
         <div class="server-status">
-             HA TUNNEL SERVER ONLINE • SUPER FAST
+            <div class="ping-dot"></div>
+            SERVER ACTIVE
         </div>
-
-        <div class="info">
-            <strong> ECONET UNLIMITED</strong><br>
-            Musatengeserwe ma files ne team kunze uko
-            USE THIS FILE 1 TAP WATO CONNECTED
-            🔋 POWERED BY ELONSK🇿🇼 
-        </div>
-
-        <a href="files/ELONSK 🇿🇼 ECS.hat" class="btn" download>
-            DOWNLOAD .HAT FILE 
-        </a>
+        <h2 style="margin: 0 0 10px 0;">ELONSK FILES</h2>
+        <p style="font-size: 0.8em; opacity: 0.7;">JANUARY 3, 2026</p>
+        <p>Download original .HAT files. 1 Tap Connect for Econet Zimbabwe. No disconnects!</p>
+        <a href="files/ELONSK 🇿🇼 ECS.hat" class="download-btn"><i class="fas fa-download"></i> DOWNLOAD .HAT</a>
     </div>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://whatsapp.com/channel/0029VbBVpuzHltY7Yk3GZU0o" class="whatsapp-float" target="_blank">
+    <div class="comments-container">
+        <h3 id="counter-text">10 / 188 Comments</h3>
+        <div id="comments-list">
+            </div>
+        <button onclick="loadMore()" id="load-more-btn" style="background:none; border:none; color:#0f0; width:100%; padding:20px; font-weight:bold; cursor:pointer; font-size:1em;">
+            <i class="fas fa-plus-circle"></i> LOAD MORE COMMENTS
+        </button>
+    </div>
+
+    <a href="javascript:void(0)" class="order-float" onclick="togglePricing()">
+        <i class="fas fa-shopping-cart"></i> ORDER FILES
+    </a>
+    <a href="https://wa.me/YOURNUMBER" class="wa-float">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <footer>
-        Made in Zimbabwe  • Elonsk Files 2026
-    </footer>
+    <div id="pricing-overlay">
+        <button onclick="togglePricing()" style="background:none; border:1px solid #0f0; color:#0f0; padding:10px 20px; border-radius:10px; margin-bottom:20px; cursor:pointer;">← BACK</button>
+        <h1 style="text-align:center;">PREMIUM ACCESS 👑</h1>
+
+        <div class="price-card">
+            <i class="fas fa-bolt" style="position:absolute; top:20px; right:20px; color:#0f0;"></i>
+            <div style="color:#0f0; font-weight:bold; letter-spacing: 1px;">WEEKLY PASS</div>
+            <div class="amt">$1 <span style="font-size:0.4em; color:#888;">/ 7 DAYS</span></div>
+            <p style="font-size: 0.9em; margin: 15px 0 5px 0;">Chat with Admin to buy:</p>
+            <div class="chat-icons">
+                <a href="#"><i class="fab fa-facebook-messenger"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="price-card vip">
+            <i class="fas fa-crown" style="position:absolute; top:20px; right:20px; color:#ffd700;"></i>
+            <div style="color:#ffd700; font-weight:bold; letter-spacing: 1px;">MONTHLY GOLD</div>
+            <div class="amt">$3 <span style="font-size:0.4em; color:#888;">/ 30 DAYS</span></div>
+            <p style="font-size: 0.9em; margin: 15px 0 5px 0;">Chat with Admin to buy:</p>
+            <div class="chat-icons">
+                <a href="#"><i class="fab fa-facebook-messenger"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="payment-footer">
+            <p style="font-size: 0.9em;">WE ACCEPT:</p>
+            <div style="font-weight: bold; letter-spacing: 1px; color: #fff;">INNBUCKS • ECOCASH • MUKURU</div>
+            <div style="margin-top: 15px; font-size: 1.5em;">
+                <i class="fas fa-mobile-alt" style="margin: 0 10px;"></i>
+                <i class="fas fa-university" style="margin: 0 10px;"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePricing() {
+            const overlay = document.getElementById('pricing-overlay');
+            overlay.style.display = (overlay.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // 100 COMMENT POOL (Expanding with Shona Slang)
+        const commentPool = [
+            {n:"Tinashe M.", t:"File rako ma 1 Elonsk, speed yacho ndeye mupengo! 🔥", d:"Just now"},
+            {n:"Kuda W.", t:"1 tap wakuto nakirwa zveshuwa, zvaita mhani.", d:"4m ago"},
+            {n:"Ruvimbo G.", t:"Haa mupfana uyu ane chipo, file ririkubvunza!", d:"12m ago"},
+            {n:"Farai J.", t:"Econet yacho yanyatso vharwa muromo ne file iri.", d:"25m ago"},
+            {n:"Tatenda Z.", t:"Ndirikutamba Freefire pasina lag, file iri i-one!", d:"40m ago"},
+            {n:"Munya X.", t:"Speed yacho i-fire mhani! Data harisi kupera.", d:"1h ago"},
+            {n:"Chipo R.", t:"Ndange ndichiti manyepo but zvashanda zvisingaite.", d:"1h ago"},
+            {n:"Blessing T.", t:"Tik Tok yacho ikungoti tsvat tsvat, thanks admin.", d:"2h ago"},
+            {n:"Nyasha P.", t:"Watiuraya ne speed Elonsk, tiri mu 4G plus muno.", d:"3h ago"},
+            {n:"Tafadzwa K.", t:"Kusvika vhara, 1 tap connect pasina dambudziko.", d:"4h ago"},
+            {n:"Anesu B.", t:"Haa file iri rakadhakwa ne speed mhani, keep it up!", d:"5h ago"},
+            {n:"Vimbai S.", t:"Ndafara zvisingaite, ndakwanisa kupedza ma series angu.", d:"6h ago"},
+            {n:"Prosper M.", t:"1 tap connect, no stress. Admin unogona.", d:"7h ago"}
+        ];
+
+        let currentCount = 0;
+
+        function loadMore() {
+            const list = document.getElementById('comments-list');
+            const target = currentCount + 10;
+            
+            for (let i = currentCount; i < target; i++) {
+                if (i >= commentPool.length) {
+                    document.getElementById('load-more-btn').style.display = 'none';
+                    break;
+                }
+                const c = commentPool[i];
+                // Using a service that provides diverse faces based on random seeds
+                const randomFace = `https://i.pravatar.cc/150?u=elonsk${i}`;
+                
+                list.innerHTML += `
+                    <div class="comment-item">
+                        <img src="${randomFace}" class="profile-img">
+                        <div class="comment-text">
+                            <strong>${c.n} <i class="fas fa-check-circle" style="font-size:0.8em;"></i></strong>
+                            <p>${c.t}</p>
+                            <span class="comment-time"><i class="fas fa-thumbs-up"></i> 12 · ${c.d}</span>
+                        </div>
+                    </div>
+                `;
+                currentCount++;
+            }
+            document.getElementById('counter-text').innerText = currentCount + " / 188 Comments";
+        }
+
+        // Run on load
+        window.onload = loadMore;
+    </script>
 
 </body>
 </html>
