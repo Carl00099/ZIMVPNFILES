@@ -20,7 +20,6 @@
             min-height: 100vh; overflow-x: hidden;
         }
 
-        /* Grok Logo Background */
         body::before {
             content: "X";
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -28,7 +27,6 @@
             z-index: -1; font-family: 'Arial Black', sans-serif;
         }
 
-        /* Grok UI Header */
         .grok-header {
             width: 100%; padding: 20px; text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -63,17 +61,18 @@
 
         @keyframes ping { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(4); opacity: 0; } }
 
-        h2 { font-size: 1.8em; letter-spacing: -1px; margin: 0 0 10px 0; font-weight: 800; }
-
         .download-btn {
             background: #fff; color: #000; padding: 18px 45px; border-radius: 8px;
-            text-decoration: none; font-weight: 700; display: inline-block;
+            text-decoration: none; font-weight: 700; display: block;
             margin-top: 30px; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;
         }
 
-        .download-btn:hover { background: var(--grok-cyan); box-shadow: 0 0 30px var(--grok-cyan); }
+        .explore-btn {
+            background: transparent; color: var(--grok-cyan); padding: 15px 45px; border-radius: 8px;
+            text-decoration: none; font-weight: 700; display: block;
+            margin-top: 15px; border: 1px solid var(--grok-cyan);
+        }
 
-        /* Floating Buttons (X Style) */
         .order-float {
             position: fixed; bottom: 30px; left: 20px; background: var(--grok-blue);
             color: #fff; padding: 15px 30px; border-radius: 12px; font-weight: bold;
@@ -87,34 +86,12 @@
             display: flex; align-items: center; justify-content: center;
             font-size: 24px; color: #000; text-decoration: none; transition: 0.3s;
         }
-
-        /* Pricing Page (Grok Mode) */
-        #pricing-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.98); z-index: 2000; padding: 40px 20px; box-sizing: border-box;
-        }
-
-        .price-card {
-            background: rgba(20, 20, 20, 0.8); border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px; padding: 30px; margin: 15px 0; text-align: left;
-        }
-
-        .price-card.vip { border: 1px solid var(--grok-cyan); background: rgba(0, 242, 255, 0.02); }
-
-        .amt { font-size: 2.5em; font-weight: 800; margin: 10px 0; color: var(--grok-cyan); }
-
-        .chat-icons { display: flex; gap: 30px; margin-top: 20px; }
-        .chat-icons a { font-size: 28px; color: #fff; opacity: 0.6; transition: 0.3s; }
-        .chat-icons a:hover { opacity: 1; color: var(--grok-cyan); }
-
-        .back-btn { background: none; border: 1px solid #fff; color: #fff; padding: 10px 25px; border-radius: 8px; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <div class="grok-header">
-        <h1 style="font-size: 1.2em; letter-spacing: 5px; opacity: 0.8;">HA TUNNEL FILES🇿🇼
-        CONNECTAI TEAM RANGU</h1>
+        <h1 style="font-size: 1.2em; letter-spacing: 5px; opacity: 0.8;">HA TUNNEL FILES🇿🇼<br>CONNECTAI TEAM RANGU</h1>
     </div>
 
     <div class="glass-card">
@@ -125,54 +102,17 @@
         <h2>ELONSK FILES ZIM🇿🇼</h2>
         <p style="opacity: 0.5; font-size: 0.8em; margin-bottom: 20px;">v4.0.2 Stable | HA Tunnel Pro</p>
         <p style="font-size: 0.95em; line-height: 1.6; color: rgba(255,255,255,0.8);">High-intelligence tunnel protocols for Econet Zimbabwe. Optimized for speed and zero latency.</p>
-        <a href="files/ELONSK 🇿🇼 ECS.hat" class="download-btn">DOWNLOAD .HAT</a>
-    
-         <a href="pricing.html" class="order-float">
-        <i class="fas fa-layer-group"></i> NEW FILE HERE🇿🇼
+        <a href="files/ELONSK_ECS.hat" class="download-btn">DOWNLOAD .HAT</a>
+        <a href="protocols.html" class="explore-btn"><i class="fas fa-layer-group"></i> FREE FILES TRIAL</a>
     </div>
+
+    <a href="pricing.html" class="order-float">
+        <i class="fas fa-layer-group"></i> NEW FILE HERE🇿🇼
     </a>
 
     <a href="https://wa.me/qr/CGGG2OUG3UNYD1" class="wa-float">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <div id="pricing-overlay">
-        <button class="back-btn" onclick="togglePricing()">← RETURN</button>
-        <h1 style="text-align:center; margin: 40px 0;">TENGA FILE RAKO TODAY MABVIRAVIRA HUCHI WE FILE</h1>
-
-        <div class="price-card">
-            <div style="font-weight: 900; opacity: 0.5; font-size: 0.7em; letter-spacing: 3px;">BASIC ACCESS</div>
-            <div class="amt">$1</div>
-            <p style="font-size: 0.8em; opacity: 0.6;">7 Days High Speed Encryption</p>
-            <div class="chat-icons">
-                <a href="https://www.facebook.com/profile.php?id=61577785121216"><i class="fab fa-facebook-messenger"></i></a>
-                <a href="https://www.facebook.com/profile.php?id=61577785121216"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/profile.php?id=61577785121216"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-
-        <div class="price-card vip">
-            <div style="font-weight: 900; color: var(--grok-cyan); font-size: 0.7em; letter-spacing: 3px;">UNLIMITED GOLD</div>
-            <div class="amt">$3</div>
-            <p style="font-size: 0.8em; opacity: 0.6;">30 Days File🇿🇼</p>
-            <div class="chat-icons">
-                <a href="https://www.facebook.com/profile.php?id=61577785121216"><i class="fab fa-facebook-messenger"></i></a>
-                <a href="https://www.facebook.com/profile.php?id=61577785121216"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/profile.php?id=61577785121216"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 50px;">
-            <p style="font-size: 0.7em; opacity: 0.4; letter-spacing: 2px;">SECURE TRANSFERS VIA</p>
-            <p style="font-weight: bold; font-size: 0.9em;">INNBUCKS • ECOCASH • MUKURU</p>
-        </div>
-    </div>
-
-    <script>
-        function togglePricing() {
-            const overlay = document.getElementById('pricing-overlay');
-            overlay.style.display = (overlay.style.display === 'block') ? 'none' : 'block';
-        }
-    </script>
 </body>
 </html>
