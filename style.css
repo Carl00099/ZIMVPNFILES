@@ -1,54 +1,53 @@
-/* General Reset */
-color: #121212;
-}
-.btn.primary:hover {
-background-color: #00ff80;
-}
-.whatsapp-btn {
-display: inline-flex;
-align-items: center;
-gap: 8px;
-padding: 10px 18px;
-border-radius: 10px;
-background: #1e1e1e;
-border: 2px solid #00cc66;
-color: #00cc66;
-text-decoration: none;
-font-weight: 600;
-transition: all 0.3s ease;
-}
-.whatsapp-btn img {
-width: 20px;
-height: 20px;
-}
-.whatsapp-btn:hover {
-background-color: #00cc66;
-color: #121212;
-}
-.list .list-row {
-display: flex;
-align-items: center;
-gap: 10px;
-background-color: #1e1e1e;
-padding: 12px 15px;
-margin-bottom: 10px;
-border-radius: 8px;
-}
-.list .list-row span {
-flex: 1;
-}
-footer {
-text-align: center;
-padding: 20px;
-background-color: #1e1e1e;
-margin-top: 40px;
-border-top: 1px solid #2a2a2a;
-}
-@media (max-width: 768px) {
-.cards {
-flex-direction: column;
-}
-.btn-row {
-flex-direction: column;
-}
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPV FILES | ELONSK</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Shared Styles with Orange Theme */
+        :root { --npv-orange: #ff9900; --grok-dark: #000; --grok-card: rgba(15, 15, 15, 0.9); }
+        body { margin: 0; background: var(--grok-dark); color: #fff; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .glass-card { background: var(--grok-card); border-radius: 20px; border: 1px solid var(--npv-orange); padding: 30px; margin: 40px 20px; text-align: center; max-width: 400px; }
+        .progress-bar-bg { width: 100%; height: 10px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 20px 0; overflow: hidden; }
+        #progress-fill { width: 0%; height: 100%; background: var(--npv-orange); box-shadow: 0 0 15px var(--npv-orange); transition: 0.5s; }
+        .share-btn { background: #25D366; color: white; padding: 18px; border-radius: 10px; width: 100%; border: none; font-weight: 800; cursor: pointer; }
+        .download-btn { background: #333; color: #777; padding: 18px; border-radius: 10px; display: block; text-decoration: none; margin-top: 15px; pointer-events: none; opacity: 0.5; }
+        .download-btn.unlocked { background: var(--npv-orange); color: #000; pointer-events: auto; opacity: 1; }
+    </style>
+</head>
+<body>
+    <div class="glass-card">
+        <h2 style="color: var(--npv-orange);">NPV  FILE IRI NDO MA 1 🇿🇼</h2>
+        <p id="instruction-text">Share to 10 groups to UNLOCK BLAZING FILE🔥🔥</p>
+        <div class="progress-bar-bg"><div id="progress-fill"></div></div>
+        <button onclick="handleShare()" class="share-btn">SHARE NOW (<span id="count">0</span>/10)</button>
+        <a href="files/ELONSK_VIP.npv4" id="download-btn" class="download-btn">LOCKED NPV</a>
+        <br>
+        <a href="index.html" style="color: #aaa; text-decoration: none; font-size: 0.8em;">← Back to HAT Files</a>
+    </div>
+
+    <script>
+        let shareCount = 0;
+        const total = 10;
+        const msg = encodeURIComponent("Wana ma-Files eNPV4 emahara pano! 🇿🇼🔥: https://whatsapp.com/channel/0029Vb6sgldI7BeEelGjRm0R");
+
+        function handleShare() {
+            window.open(`https://wa.me/?text=${msg}`, '_blank');
+            setTimeout(() => {
+                if (shareCount < total) {
+                    shareCount++;
+                    document.getElementById('progress-fill').style.width = (shareCount/total)*100 + "%";
+                    document.getElementById('count').innerText = shareCount;
+                    if (shareCount >= total) {
+                        document.getElementById('instruction-text').innerText = "VIP NPV UNLOCKED! ✅";
+                        document.getElementById('download-btn').classList.add('unlocked');
+                        document.getElementById('download-btn').innerText = "DOWNLOAD .NPV4";
+                    }
+                }
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
