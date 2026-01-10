@@ -3,35 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NPV FILES | ELONSK</title>
+    <title>NPV | ELONSK TCH</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Shared Styles with Orange Theme */
-        :root { --npv-orange: #ff9900; --grok-dark: #000; --grok-card: rgba(15, 15, 15, 0.9); }
-        body { margin: 0; background: var(--grok-dark); color: #fff; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-        .glass-card { background: var(--grok-card); border-radius: 20px; border: 1px solid var(--npv-orange); padding: 30px; margin: 40px 20px; text-align: center; max-width: 400px; }
-        .progress-bar-bg { width: 100%; height: 10px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 20px 0; overflow: hidden; }
-        #progress-fill { width: 0%; height: 100%; background: var(--npv-orange); box-shadow: 0 0 15px var(--npv-orange); transition: 0.5s; }
-        .share-btn { background: #25D366; color: white; padding: 18px; border-radius: 10px; width: 100%; border: none; font-weight: 800; cursor: pointer; }
-        .download-btn { background: #333; color: #777; padding: 18px; border-radius: 10px; display: block; text-decoration: none; margin-top: 15px; pointer-events: none; opacity: 0.5; }
-        .download-btn.unlocked { background: var(--npv-orange); color: #000; pointer-events: auto; opacity: 1; }
+        :root { 
+            --socks-cyan: #00f2ff; 
+            --grok-dark: #000; 
+            --grok-card: rgba(5, 5, 5, 0.85); 
+        }
+
+        body { 
+            margin: 0; 
+            background: #050505; 
+            color: #fff; 
+            font-family: 'Segoe UI', Roboto, sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Blurred Background Elements */
+        .bg-blur {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.05) 0%, rgba(0,0,0,1) 80%);
+            z-index: -1;
+        }
+
+        .time-notice {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff4444;
+            border: 1px solid #ff4444;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 0.8rem;
+            margin-top: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(255, 68, 68, 0.2);
+        }
+
+        .glass-card { 
+            background: var(--grok-card); 
+            border-radius: 25px; 
+            border: 1px solid rgba(0, 242, 255, 0.3); 
+            padding: 30px; 
+            margin: 20px; 
+            text-align: center; 
+            max-width: 380px; 
+            backdrop-filter: blur(15px); /* Blurred card background */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        /* Socks IP Image Container */
+        .img-container {
+            width: 100%;
+            height: 180px;
+            background: #111;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px solid #222;
+            position: relative;
+        }
+        
+        /* Add your image URL here */
+        .socks-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        /* Tech Scanning Line */
+        .scan-line {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: var(--socks-cyan);
+            box-shadow: 0 0 10px var(--socks-cyan);
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan { 0% {top: 0%} 100% {top: 100%} }
+
+        h2 { font-size: 1.4rem; color: var(--socks-cyan); margin: 10px 0; }
+
+        .progress-bar-bg { 
+            width: 100%; height: 8px; background: rgba(255,255,255,0.05); 
+            border-radius: 10px; margin: 20px 0; overflow: hidden; 
+        }
+        #progress-fill { 
+            width: 0%; height: 100%; background: var(--socks-cyan); 
+            box-shadow: 0 0 15px var(--socks-cyan); transition: 0.5s; 
+        }
+
+        .share-btn { 
+            background: #25D366; color: white; padding: 16px; 
+            border-radius: 12px; width: 100%; border: none; 
+            font-weight: 800; cursor: pointer; font-size: 1rem;
+        }
+
+        .download-btn { 
+            background: #1a1a1a; color: #444; padding: 16px; 
+            border-radius: 12px; display: block; text-decoration: none; 
+            margin-top: 15px; pointer-events: none; border: 1px dashed #333;
+        }
+        
+        .download-btn.unlocked { 
+            background: var(--socks-cyan); color: #000; 
+            pointer-events: auto; border: none; font-weight: bold;
+        }
+
+        .tech-footer {
+            margin-top: 20px;
+            font-size: 0.7rem;
+            color: #555;
+            letter-spacing: 2px;
+        }
     </style>
 </head>
 <body>
+    <div class="bg-blur"></div>
+
+    <div class="time-notice">
+        <i class="fas fa-clock"></i> expires in 2 hours 30 minutes 
+    </div>
+
     <div class="glass-card">
-        <h2 style="color: var(--npv-orange);">NPV  FILE IRI NDO MA 1 🇿🇼</h2>
-        <p id="instruction-text">Share to 10 groups to UNLOCK BLAZING FILE🔥🔥</p>
-        <div class="progress-bar-bg"><div id="progress-fill"></div></div>
-        <button onclick="handleShare()" class="share-btn">SHARE NOW (<span id="count">0</span>/10)</button>
-        <a href="files/3 TAPS 🔥 ELONSK.npvt" id="download-btn" class="download-btn">LOCKED NPV</a>
+        <div class="img-container">
+            <img src="IMAGES/1768034131550.jpg" alt="SOCKS IP PREVIEW" class="socks-img">
+            <div class="scan-line"></div>
+        </div>
+
+        <h2>NPV TUNNEL FILE 🇿🇼</h2>
+        <p id="instruction-text" style="font-size: 0.85rem; color: #aaa;">Share 10 times to unlock secure proxy</p>
+        
+        <div class="progress-bar-bg">
+            <div id="progress-fill"></div>
+        </div>
+        
+        <button onclick="handleShare()" class="share-btn">
+            <i class="fab fa-whatsapp"></i> SHARE TO UNLOCK (<span id="count">0</span>/10)
+        </button>
+        
+        <a href="files/SOCKS_ELONSK.sip" id="download-btn" class="download-btn">
+            <i class="fas fa-lock"></i> FILE SYSTEM LOCKED
+        </a>
+        
+        <div class="tech-footer">ELONSK TCH PROTOCOL v4.0</div>
+        
         <br>
-        <a href="index.html" style="color: #aaa; text-decoration: none; font-size: 0.8em;">← Back to HAT Files</a>
+        <a href="index.html" style="color: var(--socks-cyan); text-decoration: none; font-size: 0.8em; font-weight: bold;">
+            <i class="fas fa-chevron-left"></i> BACK TO HOME
+        </a>
     </div>
 
     <script>
         let shareCount = 0;
         const total = 10;
-        const msg = encodeURIComponent("https://zimvpnfiles.vercel.app Umo ma files E ha Tunnel unomawana for free! 🇿🇼🔥: https://whatsapp.com/channel/0029VbBVpuzHltY7Yk3GZU0o");
+        const msg = encodeURIComponent("https://zimvpnfiles.vercel.app Get latest SOCKS IP and VPN files for free! 🇿🇼🔥: https://whatsapp.com/channel/0029VbBVpuzHltY7Yk3GZU0o");
 
         function handleShare() {
             window.open(`https://wa.me/?text=${msg}`, '_blank');
@@ -41,9 +174,9 @@
                     document.getElementById('progress-fill').style.width = (shareCount/total)*100 + "%";
                     document.getElementById('count').innerText = shareCount;
                     if (shareCount >= total) {
-                        document.getElementById('instruction-text').innerText = "10 files left NPV HUCHII📡🔥🔥✅";
+                        document.getElementById('instruction-text').innerText = "ENCRYPTED SOCKS IP UNLOCKED! ✅";
                         document.getElementById('download-btn').classList.add('unlocked');
-                        document.getElementById('download-btn').innerText = "DOWNLOAD .NPV4";
+                        document.getElementById('download-btn').innerHTML = "<i class='fas fa-shield-alt'></i> GET SOCKS IP NOW";
                     }
                 }
             }, 2000);
