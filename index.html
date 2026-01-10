@@ -10,9 +10,9 @@
             --grok-cyan: #00f2ff;
             --grok-blue: #0066ff;
             --grok-dark: #000000;
-            --grok-card: rgba(10, 10, 10, 0.8);
+            --grok-card: rgba(10, 10, 10, 0.85);
             --wa-green: #25D366;
-            --socks-purple: #a855f7; /* Color for SOCKS button */
+            --socks-purple: #a855f7;
         }
 
         body {
@@ -22,11 +22,20 @@
             min-height: 100vh; overflow-x: hidden;
         }
 
+        /* TCH Blurred Background with "X" */
         body::before {
             content: "X";
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
             font-size: 80vw; font-weight: 900; color: rgba(255, 255, 255, 0.03);
             z-index: -1; font-family: 'Arial Black', sans-serif;
+        }
+        
+        /* Darker Blur Layer */
+        body::after {
+            content: "";
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 242, 255, 0.02) 0%, rgba(0,0,0,0.95) 100%);
+            z-index: -1;
         }
 
         .grok-header {
@@ -36,11 +45,28 @@
         }
 
         .glass-card {
-            background: var(--grok-card); border-radius: 20px;
-            backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--grok-card); border-radius: 25px;
+            backdrop-filter: blur(25px); border: 1px solid rgba(0, 242, 255, 0.2);
             padding: 30px; margin: 20px; text-align: center; max-width: 400px;
-            box-shadow: 0 0 50px rgba(0, 242, 255, 0.05);
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.8);
         }
+
+        /* HA TUNNEL BOX IMAGE CONTAINER */
+        .box-container {
+            width: 100%; height: 180px; background: #0a0a0a;
+            border-radius: 15px; margin-bottom: 20px; overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1); position: relative;
+        }
+
+        .box-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+
+        /* TCH SCANNING LINE */
+        .scan-line {
+            position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: var(--grok-cyan); box-shadow: 0 0 15px var(--grok-cyan);
+            animation: scan 3s linear infinite; z-index: 2;
+        }
+        @keyframes scan { 0% {top: 0%} 100% {top: 100%} }
 
         .server-status {
             display: inline-flex; align-items: center; gap: 10px;
@@ -63,24 +89,14 @@
         }
 
         .download-btn {
-            background: #333; color: #777; padding: 18px; border-radius: 10px;
+            background: #1a1a1a; color: #555; padding: 18px; border-radius: 10px;
             text-decoration: none; font-weight: 700; display: block; pointer-events: none; transition: 0.3s;
+            border: 1px dashed #333;
         }
+        .download-btn.unlocked { background: #fff; color: #000; pointer-events: auto; border: none; }
 
-        .download-btn.unlocked { background: #fff; color: #000; pointer-events: auto; }
-
-        /* Button Styles */
-        .npv-link-btn {
-            background: transparent; color: #ff9900; border: 1px solid #ff9900;
-            padding: 12px; border-radius: 10px; display: block; text-decoration: none;
-            margin-top: 20px; font-weight: bold; font-size: 0.9em;
-        }
-
-        .socks-link-btn {
-            background: transparent; color: var(--socks-purple); border: 1px solid var(--socks-purple);
-            padding: 12px; border-radius: 10px; display: block; text-decoration: none;
-            margin-top: 10px; font-weight: bold; font-size: 0.9em;
-        }
+        .npv-link-btn { background: transparent; color: #ff9900; border: 1px solid #ff9900; padding: 12px; border-radius: 10px; display: block; text-decoration: none; margin-top: 20px; font-weight: bold; font-size: 0.9em; }
+        .socks-link-btn { background: transparent; color: var(--socks-purple); border: 1px solid var(--socks-purple); padding: 12px; border-radius: 10px; display: block; text-decoration: none; margin-top: 10px; font-weight: bold; font-size: 0.9em; }
 
         .order-float {
             position: fixed; bottom: 30px; left: 20px; background: var(--grok-blue);
@@ -88,14 +104,9 @@
             text-decoration: none; z-index: 1000; animation: bounce 3s infinite;
             display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
-
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
-        .wa-float {
-            position: fixed; bottom: 30px; right: 20px; background: #fff;
-            width: 60px; height: 60px; border-radius: 12px; z-index: 1000;
-            display: flex; align-items: center; justify-content: center; font-size: 24px; color: #000; text-decoration: none;
-        }
+        .wa-float { position: fixed; bottom: 30px; right: 20px; background: #fff; width: 60px; height: 60px; border-radius: 12px; z-index: 1000; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #000; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -105,6 +116,11 @@
     </div>
 
     <div class="glass-card">
+        <div class="box-container">
+            <img src="ha-tunnel-box.jpg" alt="HA TUNNEL PREVIEW" class="box-img">
+            <div class="scan-line"></div>
+        </div>
+
         <div class="server-status"><div class="ping-dot"></div> SERVER ONLINE</div>
         <h2>ELONSK HAT ZW🇿🇼</h2>
         
@@ -115,7 +131,7 @@
             <i class="fab fa-whatsapp"></i> SHARE TO UNLOCK (<span id="count">0</span>/5)
         </button>
 
-        <a href="files/ELONSK FAST FILE 🔥⚡️⚡️.hat" id="download-btn" class="download-btn">
+        <a href="files/ELONSK.hat" id="download-btn" class="download-btn">
             <i class="fas fa-lock"></i> DOWNLOAD .HAT
         </a>
 
